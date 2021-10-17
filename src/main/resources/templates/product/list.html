@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div th:insert= "@{common/navbar.html}"></div>
+<div class="container">
+    <div class="row">
+        <a class="btn btn-dark btn-lg" href="products/add" role="button">Add a product </a>
+    </div>
+    <div class="row">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th>Reference</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th colspan="2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${products}">
+                <td th:text="${product.reference}"></td>
+                <td th:text="${product.designation}"></td>
+                <td th:text="${product.price}"></td>
+                <td>
+                    <a th:href="@{/products/edit/{reference}(reference=${product.reference})}" class="btn btn-info">Edit</a>
+                    <a th:href="@{/products/delete/{reference}(reference=${product.reference})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+</body>
+</html>

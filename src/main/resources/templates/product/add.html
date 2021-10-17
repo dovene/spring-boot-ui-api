@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div th:insert= "@{common/navbar.html}"></div>
+<div class="container">
+    <div class="row">
+        <form action="#" th:action="@{/products/save}" th:object="${product}" method="post" class="form-horizontal" style="width: 80%">
+            <div class="form-group">
+                <label for="reference">Reference</label>
+                <input
+                        type="text" th:field="*{reference}" class="form-control" id="reference"
+                        aria-describedby="referenceHelp" placeholder="Saisir la référence"> <small
+                    id="referenceHelp" class="form-text text-muted">Merci d'entrer la référence du produit</small>
+            </div>
+            <div class="form-group">
+                <label for="designation">Designation</label>
+                <input
+                        type="text" th:field="*{designation}" class="form-control" id="designation"
+                        aria-describedby="designationHelp" placeholder="Saisir la référence"> <small
+                    id="designationHelp" class="form-text text-muted">Merci d'entrer la référence du produit</small>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input
+                        type="text" th:field="*{price}" class="form-control" id="price"
+                        aria-describedby="priceHelp" placeholder="Saisir la référence"> <small
+                    id="priceHelp" class="form-text text-muted">Merci d'entrer le prix du produit</small>
+            </div>
+
+            <div class="form-group">
+                    <a class="btn btn-danger" href="/products">Cancel</a>
+                <input class="btn btn-primary " type="submit" value="Add ">
+
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
