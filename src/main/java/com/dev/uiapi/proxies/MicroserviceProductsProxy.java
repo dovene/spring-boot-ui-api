@@ -1,6 +1,7 @@
 package com.dev.uiapi.proxies;
 
 import com.dev.uiapi.model.Product;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "microservice-products", url = "localhost:1000")
+@FeignClient(name = "microservice-products")
+@RibbonClient(name = "microservice-products")
 public interface MicroserviceProductsProxy {
 
     @GetMapping(value = "/products")
